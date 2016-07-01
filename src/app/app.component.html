@@ -4,5 +4,6 @@
     </div>
     <div class="col-md-6">
         <product-detail *ngIf="selectedProduct" [product]="selectedProduct"></product-detail>
+        <nutrition-data *ngIf="selectedProduct" [product]="selectedProduct"></nutrition-data>
     </div>
 </div>

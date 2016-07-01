@@ -2,11 +2,12 @@ import {Component} from '@angular/core';
 import {ProductsComponent} from "./components/products/products.component";
 import {ProductDetailComponent} from "./components/product-details/product-detail.component";
 import {Product} from "./models/product";
+import {NutritionComponent} from "./components/nutrition/nutrition.component";
 
 @Component({
 	moduleId: module.id,
 	selector: 'app-root',
-	directives: [ProductsComponent, ProductDetailComponent],
+	directives: [ProductsComponent, ProductDetailComponent, NutritionComponent],
 	templateUrl: 'app.component.html',
 	styleUrls: ['app.component.css']
 })

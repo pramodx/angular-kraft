@@ -1,0 +1,9 @@
+<ul>
+    <li *ngFor="let nutrition of ( nutritions | filterBy: product.id )">
+        {{nutrition.productId}}<br>
+        {{nutrition.gServing}}<br>
+        {{nutrition.dailyServing}}<br>
+        {{nutrition.per100g}}<br>
+        {{nutrition.nutrOrder}}<br>
+    </li>
+</ul>
