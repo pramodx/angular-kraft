@@ -1,0 +1,18 @@
+<div class="product-detail">
+    <h2>{{product.title}}</h2>
+    <p>{{product.caption}}</p>
+
+    <dl>
+        <dt>Ingredients</dt>
+        <dd [innerHTML]="product.ingredients"></dd>
+
+        <dt>Allergen</dt>
+        <dd>{{product.allergen}}</dd>
+
+        <dt>Quantity of Nuts per serving</dt>
+        <dd>{{product.qty_nuts}}g</dd>
+
+        <dt>Daily Nut Target</dt>
+        <dd>{{product.nuts}}</dd>
+    </dl>
+</div>
