@@ -1,0 +1,20 @@
+table.nutrition-info{
+    border-collapse: collapse;
+    border: 1px solid #666
+}
+
+table.nutrition-info tr th,
+table.nutrition-info tr td {
+    padding: 5px;
+    text-align: center;
+    border-bottom: 1px solid #666;
+}
+table.nutrition-info tr:nth-child(even),
+table.nutrition-info tr:nth-child(even){
+    background-color: #eee;
+}
+/*table.nutrition-info tr th:nth-child(even),*/
+/*table.nutrition-info tr td:nth-child(even){*/
+    /*background-color: #ccc;*/
+/*}*/
+table.nutrition-info tbody tr th {text-align: left}

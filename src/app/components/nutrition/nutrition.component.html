@@ -1,9 +1,18 @@
-<ul>
-    <li *ngFor="let nutrition of ( nutritions | filterBy: product.id )">
-        {{nutrition.productId}}<br>
-        {{nutrition.gServing}}<br>
-        {{nutrition.dailyServing}}<br>
-        {{nutrition.per100g}}<br>
-        {{nutrition.nutrOrder}}<br>
-    </li>
-</ul>
+<table class="nutrition-info">
+    <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th>per 22g serving</th>
+            <th>% Daily Intake per serving</th>
+            <th>per 100g</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let nutrition of ( nutritions | filterBy: product.id )">
+        <th>{{nutrients[nutrition.nutrOrder - 1].name}}</th>
+        <td>{{nutrition.gServing}}{{nutrients[nutrition.nutrOrder - 1].units}}</td>
+        <td>{{nutrition.dailyServing}}</td>
+        <td>{{nutrition.per100g}}{{nutrients[nutrition.nutrOrder - 1].units}}</td>
+    </tr>
+    </tbody>
+</table>
