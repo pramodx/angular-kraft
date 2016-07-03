@@ -3,11 +3,12 @@ import {ProductsComponent} from "./components/products/products.component";
 import {ProductDetailComponent} from "./components/product-details/product-detail.component";
 import {Product} from "./models/product";
 import {NutritionComponent} from "./components/nutrition/nutrition.component";
+import {MainNavComponent} from "./components/mainnav/mainnav.component";
 
 @Component({
 	moduleId: module.id,
 	selector: 'app-root',
-	directives: [ProductsComponent, ProductDetailComponent, NutritionComponent],
+	directives: [MainNavComponent, ProductsComponent, ProductDetailComponent, NutritionComponent],
 	templateUrl: 'app.component.html',
 	styleUrls: ['app.component.css']
 })
