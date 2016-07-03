@@ -1,6 +1,8 @@
 <div class="product-detail">
-    <h2>{{product.id}} {{product.title}}</h2>
+    <h2>KRAFT - {{product.title}}</h2>
     <p>{{product.caption}}</p>
+
+    <img [src]="getImagePath(product.image)" alt="{{product.title}}"/>
 
     <dl>
         <dt>Ingredients</dt>

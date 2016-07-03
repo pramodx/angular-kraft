@@ -8,4 +8,8 @@ import {Product} from "../../models/product";
 export class ProductDetailComponent {
   @Input()
   product: Product
+
+  getImagePath(imgPath) {
+    return './img/range/img-big-' + imgPath + '.png';
+  }
 }

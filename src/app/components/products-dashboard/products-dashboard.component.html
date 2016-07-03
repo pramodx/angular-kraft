@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="col-md-6">
+        <products (selectedProduct)="onSelectProduct($event)"></products>
+    </div>
+    <div class="col-md-6">
+        <product-detail *ngIf="selectedProduct" [product]="selectedProduct"></product-detail>
+        <nutrition-data *ngIf="selectedProduct" [product]="selectedProduct"></nutrition-data>
+    </div>
+</div>

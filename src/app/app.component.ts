@@ -4,19 +4,16 @@ import {ProductDetailComponent} from "./components/product-details/product-detai
 import {Product} from "./models/product";
 import {NutritionComponent} from "./components/nutrition/nutrition.component";
 import {MainNavComponent} from "./components/mainnav/mainnav.component";
+import {ROUTER_DIRECTIVES} from "@angular/router";
 
 @Component({
 	moduleId: module.id,
 	selector: 'app-root',
-	directives: [MainNavComponent, ProductsComponent, ProductDetailComponent, NutritionComponent],
+	directives: [ROUTER_DIRECTIVES, MainNavComponent],
 	templateUrl: 'app.component.html',
 	styleUrls: ['app.component.css']
 })
 export class AppComponent {
-	selectedProduct: Product;
 
-	onSelectProduct(product: Product) {
-		this.selectedProduct = product;
-	}
 
 }
