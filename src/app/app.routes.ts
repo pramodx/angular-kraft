@@ -5,7 +5,8 @@ import {RecipeComponent} from "./components/recipes/recipes.component";
 export const routes: RouterConfig = [
 	{
 		path: '',
-		redirectTo: '/products'
+		redirectTo: '/products',
+		pathMatch: 'full'
 	},
 	{
 		path: 'products',
