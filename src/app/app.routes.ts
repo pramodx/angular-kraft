@@ -2,6 +2,7 @@ import {RouterConfig, provideRouter} from "@angular/router";
 import {ProductsDashboardComponent} from "./components/products-dashboard/products-dashboard.component";
 import {AdminComponent} from "./components/admin/admin.component";
 import {RecipeComponent} from "./components/recipes/recipes.component";
+import {Product} from "./models/product";
 export const routes: RouterConfig = [
 	{
 		path: '',
@@ -10,6 +11,10 @@ export const routes: RouterConfig = [
 	},
 	{
 		path: 'products',
+		component: ProductsDashboardComponent
+	},
+	{
+		path: 'products/:id',
 		component: ProductsDashboardComponent
 	},
 	{
