@@ -1,11 +1,11 @@
 import {RouterConfig, provideRouter} from "@angular/router";
 import {ProductsDashboardComponent} from "./components/products-dashboard/products-dashboard.component";
 import {AdminComponent} from "./components/admin/admin.component";
-import {RecipeComponent} from "./components/recipes/recipes.component";
+import {RecipeDashboardComponent} from "./components/recipe-dashboard/recipe-dashboard.component";
 export const routes: RouterConfig = [
 	{
 		path: '',
-		redirectTo: '/products',
+		redirectTo: '/recipes',
 		pathMatch: 'full'
 	},
 	{
@@ -22,7 +22,7 @@ export const routes: RouterConfig = [
 	},
 	{
 		path: 'recipes',
-		component: RecipeComponent
+		component: RecipeDashboardComponent
 	}
 ];
 

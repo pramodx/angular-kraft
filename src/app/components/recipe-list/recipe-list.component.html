@@ -1,0 +1,8 @@
+<div class="recipe-list">
+    <ul>
+        <li *ngFor="let recipe of recipes">
+            <img [src]="getImagePath(recipe.recipe_image)" >
+            <p>{{recipe.name}}</p>
+        </li>
+    </ul>
+</div>

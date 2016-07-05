@@ -2,5 +2,8 @@
     text-align: center;
     img {
         height: 100px;
+        &:hover {
+            cursor: pointer;
+        }
     }
 }

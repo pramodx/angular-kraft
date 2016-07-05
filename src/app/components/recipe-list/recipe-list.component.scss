@@ -1,0 +1,13 @@
+.recipe-list {
+    ul {
+        li {
+            margin: 10px 5px;
+            float: left;
+            list-style-type: none;
+            max-width: 33%;
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
