@@ -1,7 +1,8 @@
-import {Component, OnInit, Output} from "@angular/core";
+import {Component, OnInit, Output, OnDestroy} from "@angular/core";
 import {Product} from "../../models/product";
 import {ProductsService} from "../../services/products.service";
 import {EventEmitter} from "@angular/compiler/src/facade/async";
+import {Router} from "@angular/router";
 @Component({
 	selector: 'products',
 	providers: [ProductsService],
@@ -13,7 +14,9 @@ export class ProductsComponent implements OnInit {
 
 	@Output() selectedProduct = new EventEmitter<Product>();
 
-	constructor(private _productsService:ProductsService) {
+	constructor(
+		private _productsService:ProductsService,
+		private _router: Router) {
 	}
 
 	ngOnInit() {
@@ -29,6 +32,8 @@ export class ProductsComponent implements OnInit {
 	}
 
 	onSelectProduct(product:Product) {
-		this.selectedProduct.emit(product);
+		//this.selectedProduct.emit(product);
+		let link = ['/products', product.id];
+		this._router.navigate(link)
 	}
 }

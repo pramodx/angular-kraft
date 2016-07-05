@@ -9,9 +9,5 @@ import {Product} from "../../models/product";
 	directives: [ProductsComponent, ProductDetailComponent, NutritionComponent]
 })
 export class ProductsDashboardComponent {
-	selectedProduct: Product;
 
-	onSelectProduct(product: Product) {
-		this.selectedProduct = product;
-	}
 }

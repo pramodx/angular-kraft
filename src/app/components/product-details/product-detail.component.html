@@ -1,4 +1,7 @@
-<div class="product-detail">
+<div class="product-detail" *ngIf="product == null">
+    <h2>No Product Selected</h2>
+</div>
+<div class="product-detail" *ngIf="product!=null">
     <h2>KRAFT - {{product.title}}</h2>
     <p>{{product.caption}}</p>
 
