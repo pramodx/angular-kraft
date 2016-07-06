@@ -1,8 +1,14 @@
-<div class="recipe-list">
-    <ul>
-        <li *ngFor="let recipe of recipes">
-            <img [src]="getImagePath(recipe.recipe_image)" >
-            <p>{{recipe.name}}</p>
-        </li>
-    </ul>
+<div class="container">
+    <div class="recipe-list" *ngIf="recipes == null">
+        <h3>No recipes yet!</h3>
+        <p>You may start by creating recipes by clicking <a [routerLink]="['/editor/add']">here</a></p>
+    </div>
+    <div class="recipe-list" *ngIf="recipes != null">
+        <ul>
+            <li *ngFor="let recipe of recipes">
+                <img [src]="getImagePath(recipe.recipe_image)" >
+                <p>{{recipe.name}}</p>
+            </li>
+        </ul>
+    </div>
 </div>

@@ -3,7 +3,9 @@ import {MainNavComponent} from "./components/mainnav/mainnav.component";
 import {ROUTER_DIRECTIVES, Router, ActivatedRoute} from "@angular/router";
 import {ProductsDashboardComponent} from "./components/products-dashboard/products-dashboard.component";
 import {AdminComponent} from "./components/admin/admin.component";
-import {RecipeDashboardComponent} from "./components/recipe-dashboard/recipe-dashboard.component";
+import {RecipeListComponent} from "./components/recipe-list/recipe-list.component";
+import {RecipeEditorComponent} from "./components/recipe-editor/recipe-editor.component";
+
 
 @Component({
 	moduleId: module.id,
@@ -14,7 +16,8 @@ import {RecipeDashboardComponent} from "./components/recipe-dashboard/recipe-das
 	precompile: [
 		ProductsDashboardComponent,
 		AdminComponent,
-		RecipeDashboardComponent
+		RecipeListComponent,
+		RecipeEditorComponent
 	]
 })
 export class AppComponent {
