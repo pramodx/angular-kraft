@@ -6,11 +6,20 @@
  * User Configuration.
  **********************************************************************************************/
 /** Map relative paths to URLs. */
-const map: any = {
+var map = {
+  firebase: 'vendor/firebase',
+  angularfire2: 'vendor/angularfire2'
 };
-
 /** User packages configuration. */
-const packages: any = {
+var packages = {
+  angularfire2: {
+    defaultExtension: 'js',
+    main: 'angularfire2.js'
+  },
+  firebase: {
+    defaultExtension: 'js',
+    main: 'firebase.js'
+  }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
