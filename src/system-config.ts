@@ -7,7 +7,7 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 var map = {
-  firebase: 'vendor/firebase',
+  firebase: 'vendor/firebase/firebase.js',
   angularfire2: 'vendor/angularfire2'
 };
 /** User packages configuration. */
@@ -15,10 +15,6 @@ var packages = {
   angularfire2: {
     defaultExtension: 'js',
     main: 'angularfire2.js'
-  },
-  firebase: {
-    defaultExtension: 'js',
-    main: 'firebase.js'
   }
 };
 

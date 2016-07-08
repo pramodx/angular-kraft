@@ -1,14 +1,31 @@
-<div class="container">
+<div class="container" *ngIf="items">
     <div class="recipe-list" *ngIf="recipes == null">
+        <h3>Loading Recipes...</h3>
+    </div>
+    <div class="recipe-list" *ngIf="recipes != null && recipes.length == 0">
         <h3>No recipes yet!</h3>
         <p>You may start by creating recipes by clicking <a [routerLink]="['/editor/add']">here</a></p>
     </div>
-    <div class="recipe-list" *ngIf="recipes != null">
-        <ul>
-            <li *ngFor="let recipe of recipes">
-                <img [src]="getImagePath(recipe.recipe_image)" >
-                <p>{{recipe.name}}</p>
-            </li>
-        </ul>
+    <div class="recipe-list" *ngIf="recipes != null && recipes.length > 0">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Recipe List
+                <a href="#" class="pull-right" [routerLink]="['/editor/add']">Add Recipe</a>
+            </div>
+
+
+            <!-- List group -->
+            <table class="table">
+                <tr class="list-group-item" *ngFor="let recipe of recipes ">
+                    <td class="title"><a href="#" [routerLink]="['detail/', {id: recipe.uid}]">{{recipe.name}}</a></td>
+                    <td>
+                        <a href="#" class="glyphicon glyphicon-pencil" aria-hidden="true"></a>
+                    </td>
+                    <td>
+                        <a href="#" class="glyphicon glyphicon-remove" aria-hidden="true"></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>

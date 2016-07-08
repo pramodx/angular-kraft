@@ -3,6 +3,7 @@ import {ProductsDashboardComponent} from "./components/products-dashboard/produc
 import {AdminComponent} from "./components/admin/admin.component";
 import {RecipeListComponent} from "./components/recipe-list/recipe-list.component";
 import {RecipeEditorComponent} from "./components/recipe-editor/recipe-editor.component";
+import {RecipeDetailComponent} from "./components/recipe-detail/recipe-detail.component";
 export const routes: RouterConfig = [
 	{
 		path: '',
@@ -24,6 +25,10 @@ export const routes: RouterConfig = [
 	{
 		path: 'recipes',
 		component: RecipeListComponent
+	},
+	{
+		path: 'recipe/:id',
+		component: RecipeDetailComponent
 	},
 	{
 		path: 'editor',

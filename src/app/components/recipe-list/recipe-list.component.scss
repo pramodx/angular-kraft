@@ -1,12 +1,16 @@
 .recipe-list {
-    ul {
-        li {
-            margin: 10px 5px;
-            float: left;
-            list-style-type: none;
-            max-width: 33%;
-            img {
-                width: 100%;
+    padding: 20px 0;
+    max-height: 300px;
+    overflow: auto;
+    table {
+        tr {
+            &.list-group-item {
+                display: table-row;
+            }
+            td {
+                &.title {
+                    width: 95%;
+                }
             }
         }
     }

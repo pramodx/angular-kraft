@@ -1,5 +1,5 @@
 export class Recipe {
-	id: number;
+	uid: string;
 	name: string;
 	product_id: number;
 	recipe_image: string;
@@ -7,5 +7,4 @@ export class Recipe {
 	making: string;
 	preptime: number;
 	serves: number;
-	
 }
