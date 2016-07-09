@@ -1,0 +1,25 @@
+<div class="container recipe-detail" *ngIf="recipe | async">
+    <a href="#" (click)="goBack()" class="btn">Back to recipes</a>
+    <div class="row">
+        <div class="col-md-12">
+
+            <h3>{{ (recipe | async)?.name }}</h3>
+            <p><strong>Prep Time:</strong> {{ (recipe | async)?.preptime }}mins</p>
+            <p><strong>Serves:</strong> {{ (recipe | async)?.serves }}</p>
+            <div class="col-md-4">
+                <h4>What you need</h4>
+                <p class="copy-text">{{ (recipe | async)?.need }}</p>
+
+            </div>
+            <div class="col-md-4">
+                <h4>How to make it</h4>
+                <p class="copy-text">{{ (recipe | async)?.making }}</p>
+            </div>
+            <div class="col-md-4">
+                <img [src]="getImagePath((recipe | async)?.recipe_image)" alt="{{ (recipe | async)?.recipe_image }}">
+                <img *ngIf="product" class="product-image" [src]="getProductImage(productId)" />
+            </div>
+        </div>
+
+    </div>
+</div>
