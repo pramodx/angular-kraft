@@ -52,10 +52,5 @@ export class RecipeDetailComponent implements OnInit {
 	getImagePath(imgName){
 		return './img/recipes/img-small-' + imgName + '.jpg';
 	}
-	
-	goBack(){
-		history.back()
-	}
-	
-	
+		
 }

@@ -114,9 +114,9 @@ export class RecipeEditorComponent implements OnInit {
 				preptime: +preptime,
 				serves: +serves,
 				recipe_image: this.getRecipeImage(name)
-			}).then(() => {
+			}).then((response) => {
 				console.log('successfully added data');
-				this._router.navigate(['/recipes']);
+				this._router.navigate(['/recipes/recipe', response.key]);
 			});
 		}
 		
@@ -132,7 +132,7 @@ export class RecipeEditorComponent implements OnInit {
 				recipe_image: this.getRecipeImage(name)
 			}).then(() => {
 				console.log('successfully updated data');
-				this._router.navigate(['/recipes']);
+				this._router.navigate(['/recipes/recipe', this.recipeIndex]);
 			});
 		}
 		

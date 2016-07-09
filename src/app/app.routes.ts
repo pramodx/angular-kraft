@@ -7,7 +7,7 @@ import {RecipeDetailComponent} from "./components/recipe-detail/recipe-detail.co
 export const routes: RouterConfig = [
 	{
 		path: '',
-		redirectTo: '/recipes',
+		redirectTo: '/products',
 		pathMatch: 'full'
 	},
 	{
@@ -27,22 +27,22 @@ export const routes: RouterConfig = [
 		component: RecipeListComponent
 	},
 	{
-		path: 'recipe/:id',
+		path: 'recipes/recipe/:id',
 		component: RecipeDetailComponent,
 		pathMatch: 'full'
 	},
 	{
-		path: 'editor',
+		path: 'recipes/editor',
 		component: RecipeEditorComponent,
 		pathMatch: 'full'
 	},
 	{
-		path: 'editor/add',
+		path: 'recipes/editor/add',
 		component: RecipeEditorComponent,
 		pathMatch: 'full'
 	},
 	{
-		path: 'editor/edit/:id',
+		path: 'recipes/editor/edit/:id',
 		component: RecipeEditorComponent,
 		pathMatch: 'full'
 	}
