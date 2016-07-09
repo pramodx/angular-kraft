@@ -7,17 +7,22 @@
             <p><strong>Prep Time:</strong> {{ (recipe | async)?.preptime }}mins</p>
             <p><strong>Serves:</strong> {{ (recipe | async)?.serves }}</p>
             <div class="col-md-4">
+                <img *ngIf="product" class="pull-right product-image" [src]="getProductImage(productId)" />
                 <h4>What you need</h4>
-                <p class="copy-text">{{ (recipe | async)?.need }}</p>
+                <p class="copy-text">
+                    {{ (recipe | async)?.need }}
+                </p>
 
             </div>
             <div class="col-md-4">
                 <h4>How to make it</h4>
-                <p class="copy-text">{{ (recipe | async)?.making }}</p>
+                <p class="copy-text">
+                    {{ (recipe | async)?.making }}
+                </p>
             </div>
             <div class="col-md-4">
-                <img [src]="getImagePath((recipe | async)?.recipe_image)" alt="{{ (recipe | async)?.recipe_image }}">
-                <img *ngIf="product" class="product-image" [src]="getProductImage(productId)" />
+                <img class="recipe-image" [src]="getImagePath((recipe | async)?.recipe_image)" alt="{{ (recipe | async)?.recipe_image }}">
+
             </div>
         </div>
 

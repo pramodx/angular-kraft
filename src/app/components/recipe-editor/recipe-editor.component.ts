@@ -1,10 +1,13 @@
 import {Component, OnInit} from "@angular/core";
 import {DataService} from "../../services/data.service";
 import 'rxjs/Rx';
-import {AngularFire} from "angularfire2/angularfire2";
+import {AngularFire} from "angularfire2";
 import {Product} from "../../models/product";
 import {ProductsService} from "../../services/products.service";
-import {Router} from "@angular/router";
+import {Router, Route, ActivatedRoute} from "@angular/router";
+import {ControlGroup, Control, FormBuilder, Validators} from "@angular/common";
+import {Recipe} from "../../models/recipe";
+import has = Reflect.has;
 
 @Component({
 	selector: 'recipe-editor',
@@ -13,21 +16,80 @@ import {Router} from "@angular/router";
 	providers: [DataService, ProductsService]
 })
 export class RecipeEditorComponent implements OnInit {
+	recipeEditForm: ControlGroup;
+	private _mode = 'Add';
+	recipeIndex: string;
 	response: string;
 	isLoggedIn: boolean;
 	products: Product[];
+	sub: any;
+	recipe: Recipe
 	
 	constructor(
 		public af: AngularFire,
 		private _productsService: ProductsService,
-	    private _router: Router
+	    private _router: Router,
+	    private _route: ActivatedRoute,
+	    private _formBuilder: FormBuilder
 	){}
 	
 	ngOnInit(){
 		//get list of all products
 		this._productsService.getAllProducts().then((products) => this.products = products);
+		
+		this.sub = this._route.params.subscribe(params => {
+			this.recipeIndex = params['id'];
+			if (this.recipeIndex) {
+				this._mode = 'Edit'
+			}
+			
+		});
+		
+		
+		let fbName = '';
+		let fbProduct = null;
+		let fbNeed = '';
+		let fbMaking = '';
+		let fbPrepTime = null;
+		let fbServes = null;
+		
+		if (this._mode === 'Edit'){
+			this.af.database.object('/data/' + this.recipeIndex)
+				.subscribe(response => {
+					this.recipe = response;
+										
+					fbName = this.recipe.name;
+					fbProduct = this.recipe.product_id;
+					fbNeed = this.recipe.need;
+					fbMaking = this.recipe.making;
+					fbPrepTime = this.recipe.preptime;
+					fbServes = this.recipe.serves;
+					
+					this.recipeEditForm = this._formBuilder.group({
+						name: [fbName, Validators.required],
+						product_id: [fbProduct, Validators.required],
+						need: [fbNeed, Validators.required],
+						making: [fbMaking, Validators.required],
+						preptime: [fbPrepTime, Validators.compose([Validators.required, hasNumbers, greaterThanZero])],
+						serves: [fbServes, Validators.compose([Validators.required, hasNumbers, greaterThanZero])]
+					})
+					
+				});
+			
+		}
+		
+		this.recipeEditForm = this._formBuilder.group({
+			name: [fbName, Validators.required],
+			product_id: [fbProduct, Validators.required],
+			need: [fbNeed, Validators.required],
+			making: [fbMaking, Validators.required],
+			preptime: [fbPrepTime, Validators.compose([Validators.required, hasNumbers, greaterThanZero])],
+			serves: [fbServes, Validators.compose([Validators.required, hasNumbers, greaterThanZero])]
+		})
+		
+		
 	}
-	
+		
 	onSubmit(
 		name: string,
 		product_id: string,
@@ -41,18 +103,39 @@ export class RecipeEditorComponent implements OnInit {
 		}
 			
 		const itemObservable = this.af.database.list('/data');
-		itemObservable.push({
-			name: name,
-			product_id: +product_id,
-			need: need,
-			making: making,
-			preptime: +preptime,
-			serves: +serves,
-			recipe_image: this.getRecipeImage(name)
-		}).then((response) => {
-			console.log('successfully added data');
-			this._router.navigate(['/recipes']);
-		});
+		
+		//Add
+		if (this._mode == 'Add'){
+			itemObservable.push({
+				name: name,
+				product_id: +product_id,
+				need: need,
+				making: making,
+				preptime: +preptime,
+				serves: +serves,
+				recipe_image: this.getRecipeImage(name)
+			}).then(() => {
+				console.log('successfully added data');
+				this._router.navigate(['/recipes']);
+			});
+		}
+		
+		//EDit
+		else if(this._mode == 'Edit'){
+			itemObservable.update(this.recipeIndex, {
+				name: name,
+				product_id: +product_id,
+				need: need,
+				making: making,
+				preptime: +preptime,
+				serves: +serves,
+				recipe_image: this.getRecipeImage(name)
+			}).then(() => {
+				console.log('successfully updated data');
+				this._router.navigate(['/recipes']);
+			});
+		}
+		
 		
 	}
 	
@@ -64,4 +147,23 @@ export class RecipeEditorComponent implements OnInit {
 		this.af.auth.login();
 		localStorage.setItem('isLoggedIn', "true")
 	}
+	
+	goBack(){
+		history.back()
+	}
 }
+
+function hasNumbers(control: Control):{[s:string]:boolean}{
+	if (!('' + control.value).match('\\d+')) {
+		return {noNumbers: true};
+	}
+}
+
+
+function greaterThanZero(control: Control):{[s:string]:boolean}{
+	if (!(control.value > 0)) {
+		return {tooSmall: true};
+	}
+}
+
+

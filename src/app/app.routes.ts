@@ -33,15 +33,18 @@ export const routes: RouterConfig = [
 	},
 	{
 		path: 'editor',
-		component: RecipeEditorComponent
+		component: RecipeEditorComponent,
+		pathMatch: 'full'
 	},
 	{
 		path: 'editor/add',
-		component: RecipeEditorComponent
+		component: RecipeEditorComponent,
+		pathMatch: 'full'
 	},
 	{
 		path: 'editor/edit/:id',
-		component: RecipeEditorComponent
+		component: RecipeEditorComponent,
+		pathMatch: 'full'
 	}
 ];
 

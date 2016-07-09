@@ -17,6 +17,7 @@
         tr {
             &.list-group-item {
                 display: table-row;
+                text-transform: uppercase;
             }
             td {
                 &.title {
@@ -24,5 +25,9 @@
                 }
             }
         }
+    }
+    a.glyphicon {
+        display: inline;
+        text-indent: -999em;
     }
 }
