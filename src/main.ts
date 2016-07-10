@@ -20,8 +20,8 @@ bootstrap(AppComponent, [
         storageBucket: "kraft-90cb5.appspot.com",
     }),
     firebaseAuthConfig({
-        provider: AuthProviders.Google,
-        method: AuthMethods.Redirect
+        provider: AuthProviders.Password,
+        method: AuthMethods.Password
     })
 ]);
 

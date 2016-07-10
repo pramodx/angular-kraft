@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ROUTER_DIRECTIVES} from "@angular/router";
 import {AngularFire} from "angularfire2";
 import {Observable} from "rxjs/Rx";
@@ -9,9 +9,10 @@ import {Recipe} from "../../models/recipe";
 	styleUrls: ['./app/components/recipe-list/recipe-list.component.css'],
 	directives: [ROUTER_DIRECTIVES]
 })
-export class RecipeListComponent {
+export class RecipeListComponent implements OnInit {
 	recipes:Recipe[];
 	items: Observable<any[]>;
+	isLoggedIn: boolean = false;
 	
 	constructor(private af: AngularFire) {
 		this.items = af.database.list('/data', {preserveSnapshot: true});
@@ -24,6 +25,14 @@ export class RecipeListComponent {
 					this.recipes.push(obj);
 				})
 			})
+	}
+	
+	ngOnInit(){
+		//check if logged in
+		if (localStorage.getItem('authToken')) {
+			//this.login();
+			this.isLoggedIn = true;
+		}
 	}
 	
 	

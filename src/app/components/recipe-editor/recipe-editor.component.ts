@@ -34,6 +34,13 @@ export class RecipeEditorComponent implements OnInit {
 	){}
 	
 	ngOnInit(){
+		
+		//check if logged in
+		if (!localStorage.getItem('authToken')) {
+			//this.login();
+			this._router.navigate(['/admin']);
+		}
+		
 		//get list of all products
 		this._productsService.getAllProducts().then((products) => this.products = products);
 		
@@ -55,26 +62,32 @@ export class RecipeEditorComponent implements OnInit {
 		
 		if (this._mode === 'Edit'){
 			this.af.database.object('/data/' + this.recipeIndex)
-				.subscribe(response => {
-					this.recipe = response;
-										
-					fbName = this.recipe.name;
-					fbProduct = this.recipe.product_id;
-					fbNeed = this.recipe.need;
-					fbMaking = this.recipe.making;
-					fbPrepTime = this.recipe.preptime;
-					fbServes = this.recipe.serves;
+				.subscribe(
+					response => {
+						this.recipe = response;
+											
+						fbName = this.recipe.name;
+						fbProduct = this.recipe.product_id;
+						fbNeed = this.recipe.need;
+						fbMaking = this.recipe.making;
+						fbPrepTime = this.recipe.preptime;
+						fbServes = this.recipe.serves;
+						
+						this.recipeEditForm = this._formBuilder.group({
+							name: [fbName, Validators.required],
+							product_id: [fbProduct, Validators.required],
+							need: [fbNeed, Validators.required],
+							making: [fbMaking, Validators.required],
+							preptime: [fbPrepTime, Validators.compose([Validators.required, hasNumbers, greaterThanZero])],
+							serves: [fbServes, Validators.compose([Validators.required, hasNumbers, greaterThanZero])]
+						})
 					
-					this.recipeEditForm = this._formBuilder.group({
-						name: [fbName, Validators.required],
-						product_id: [fbProduct, Validators.required],
-						need: [fbNeed, Validators.required],
-						making: [fbMaking, Validators.required],
-						preptime: [fbPrepTime, Validators.compose([Validators.required, hasNumbers, greaterThanZero])],
-						serves: [fbServes, Validators.compose([Validators.required, hasNumbers, greaterThanZero])]
-					})
-					
-				});
+					},
+					error => {
+						console.log(error);
+						this._router.navigate(['/recipes']);
+					}
+				);
 			
 		}
 		
@@ -98,10 +111,6 @@ export class RecipeEditorComponent implements OnInit {
 		preptime: string,
 		serves: string
 	){
-		if (!localStorage.getItem('isLoggedIn')) {
-			this.login();
-		}
-			
 		const itemObservable = this.af.database.list('/data');
 		
 		//Add
@@ -143,10 +152,10 @@ export class RecipeEditorComponent implements OnInit {
 		return name.split(" ").join("-").toLowerCase();
 	}
 	
-	login(){
-		this.af.auth.login();
-		localStorage.setItem('isLoggedIn', "true")
-	}
+	// login(){
+	// 	this.af.auth.login();
+	// 	localStorage.setItem('isLoggedIn', "true")
+	// }
 	
 	goBack(){
 		history.back()

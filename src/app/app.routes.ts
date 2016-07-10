@@ -28,8 +28,7 @@ export const routes: RouterConfig = [
 	},
 	{
 		path: 'recipes/recipe/:id',
-		component: RecipeDetailComponent,
-		pathMatch: 'full'
+		component: RecipeDetailComponent
 	},
 	{
 		path: 'recipes/editor',
@@ -38,13 +37,11 @@ export const routes: RouterConfig = [
 	},
 	{
 		path: 'recipes/editor/add',
-		component: RecipeEditorComponent,
-		pathMatch: 'full'
+		component: RecipeEditorComponent
 	},
 	{
 		path: 'recipes/editor/edit/:id',
-		component: RecipeEditorComponent,
-		pathMatch: 'full'
+		component: RecipeEditorComponent
 	}
 ];
 

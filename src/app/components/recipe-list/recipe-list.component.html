@@ -10,7 +10,7 @@
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">Recipe List
-                <a href="#" class="btn btn-primary add-recipe pull-right" [routerLink]="['editor/add']">Add Recipe</a>
+                <a href="#" class="btn btn-primary add-recipe pull-right" [routerLink]="['editor/add']" *ngIf="isLoggedIn">Add Recipe</a>
             </div>
 
 
@@ -18,10 +18,10 @@
             <table class="table">
                 <tr class="list-group-item" *ngFor="let recipe of recipes ">
                     <td class="title"><a href="#" [routerLink]="['recipe/', recipe.uid]">{{recipe.name}}</a></td>
-                    <td>
+                    <td *ngIf="isLoggedIn">
                         <a href="#" [routerLink]="['editor/edit/', recipe.uid]" class="glyphicon glyphicon-pencil" title="Edit" aria-hidden="true"></a>
                     </td>
-                    <td>
+                    <td *ngIf="isLoggedIn">
                         <a href="#" (click)="deleteRecipe(recipe.uid)" class="glyphicon glyphicon-remove" title="Delete" aria-hidden="true"></a>
                     </td>
                 </tr>
