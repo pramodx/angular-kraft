@@ -20,6 +20,9 @@
                 display: table-row;
                 text-transform: uppercase;
             }
+            &:nth-child(even){
+                background-color: #def;
+            }
             td {
                 &.title {
                     width: 95%;

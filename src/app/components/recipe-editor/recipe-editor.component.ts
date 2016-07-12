@@ -60,45 +60,45 @@ export class RecipeEditorComponent implements OnInit {
 		let fbPrepTime = null;
 		let fbServes = null;
 		
-		if (this._mode === 'Edit'){
-			this.af.database.object('/data/' + this.recipeIndex)
-				.subscribe(
-					response => {
-						this.recipe = response;
-											
-						fbName = this.recipe.name;
-						fbProduct = this.recipe.product_id;
-						fbNeed = this.recipe.need;
-						fbMaking = this.recipe.making;
-						fbPrepTime = this.recipe.preptime;
-						fbServes = this.recipe.serves;
-						
-						this.recipeEditForm = this._formBuilder.group({
-							name: [fbName, Validators.required],
-							product_id: [fbProduct, Validators.required],
-							need: [fbNeed, Validators.required],
-							making: [fbMaking, Validators.required],
-							preptime: [fbPrepTime, Validators.compose([Validators.required, hasNumbers, greaterThanZero])],
-							serves: [fbServes, Validators.compose([Validators.required, hasNumbers, greaterThanZero])]
-						})
-					
-					},
-					error => {
-						console.log(error);
-						this._router.navigate(['/recipes']);
-					}
-				);
-			
-		}
 		
-		this.recipeEditForm = this._formBuilder.group({
-			name: [fbName, Validators.required],
-			product_id: [fbProduct, Validators.required],
-			need: [fbNeed, Validators.required],
-			making: [fbMaking, Validators.required],
-			preptime: [fbPrepTime, Validators.compose([Validators.required, hasNumbers, greaterThanZero])],
-			serves: [fbServes, Validators.compose([Validators.required, hasNumbers, greaterThanZero])]
-		})
+		this.af.database.object('/data/' + this.recipeIndex)
+			.subscribe(
+				response => {
+					this.recipe = response;
+										
+					fbName = this.recipe.name;
+					fbProduct = this.recipe.product_id;
+					fbNeed = this.recipe.need;
+					fbMaking = this.recipe.making;
+					fbPrepTime = this.recipe.preptime;
+					fbServes = this.recipe.serves;
+					
+					this.recipeEditForm = this._formBuilder.group({
+						name: [fbName, Validators.required],
+						product_id: [fbProduct, Validators.required],
+						need: [fbNeed, Validators.required],
+						making: [fbMaking, Validators.required],
+						preptime: [fbPrepTime, Validators.compose([Validators.required, hasNumbers, greaterThanZero])],
+						serves: [fbServes, Validators.compose([Validators.required, hasNumbers, greaterThanZero])]
+					})
+				
+				},
+				error => {
+					console.log(error);
+					this._router.navigate(['/recipes']);
+				}
+			);
+			
+		
+		
+		// this.recipeEditForm = this._formBuilder.group({
+		// 	name: [fbName, Validators.required],
+		// 	product_id: [fbProduct, Validators.required],
+		// 	need: [fbNeed, Validators.required],
+		// 	making: [fbMaking, Validators.required],
+		// 	preptime: [fbPrepTime, Validators.compose([Validators.required, hasNumbers, greaterThanZero])],
+		// 	serves: [fbServes, Validators.compose([Validators.required, hasNumbers, greaterThanZero])]
+		// })
 		
 		
 	}
