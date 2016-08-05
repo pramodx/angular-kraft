@@ -22,7 +22,7 @@
                         <a href="#" [routerLink]="['editor/edit/', recipe.uid]" class="glyphicon glyphicon-pencil" title="Edit" aria-hidden="true"></a>
                     </td>
                     <td *ngIf="isLoggedIn">
-                        <a href="#" (click)="deleteRecipe(recipe.uid)" class="glyphicon glyphicon-remove" title="Delete" aria-hidden="true"></a>
+                        <a href="#" [routerLink]="['/recipes']" (click)="deleteRecipe(recipe.uid)" class="glyphicon glyphicon-remove" title="Delete" aria-hidden="true"></a>
                     </td>
                 </tr>
             </table>
