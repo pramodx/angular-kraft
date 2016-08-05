@@ -1,0 +1,25 @@
+.recipe-list {
+  padding: 20px 0; }
+  .recipe-list .panel-heading {
+    position: relative; }
+  .recipe-list .add-recipe {
+    border: 1px solid #337ab7;
+    border-radius: 5px;
+    padding: 5px 10px;
+    position: absolute;
+    right: 10px;
+    top: 5px; }
+  .recipe-list table {
+    display: table;
+    max-height: 400px;
+    overflow: auto; }
+    .recipe-list table tr.list-group-item {
+      display: table-row;
+      text-transform: uppercase; }
+    .recipe-list table tr:nth-child(even) {
+      background-color: #def; }
+    .recipe-list table tr td.title {
+      width: 95%; }
+  .recipe-list a.glyphicon {
+    display: inline;
+    text-indent: -999em; }

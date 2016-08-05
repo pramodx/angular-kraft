@@ -1,0 +1,6 @@
+.product-item {
+  text-align: center; }
+  .product-item img {
+    height: 100px; }
+    .product-item img:hover {
+      cursor: pointer; }

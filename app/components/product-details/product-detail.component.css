@@ -1,0 +1,14 @@
+.product-detail section {
+  padding: 20px; }
+  .product-detail section + section {
+    border-top: 1px solid #ccc; }
+
+.product-detail img {
+  display: table;
+  margin: 0 auto; }
+
+.product-detail dl dd {
+  margin-bottom: 10px; }
+
+.product-detail h4 {
+  margin-top: 0; }
